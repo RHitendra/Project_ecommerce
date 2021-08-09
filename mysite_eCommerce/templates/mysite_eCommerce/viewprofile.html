@@ -1,0 +1,69 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block css %}
+.col-lg-6{
+         margin: auto;
+        }
+{% endblock %}
+{% block section %}
+		<div >
+			<h1>Profile Page:</h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+	<scetion>
+                    <div class="col-lg-6" ><form>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label ><b>First Name:</b></label>
+                <input type="email" class="form-control" id="id_fname" aria-describedby="emailHelp" value="{{user.first_name}}" readonly>
+              </div>
+              <div class="form-group">
+                <label >Last Name:</label>
+                <input type="email" class="form-control" id="id_lname" aria-describedby="emailHelp" value="{{user.last_name}}" readonly>
+              </div>
+              <div class="form-group">
+                  <label ><b>Email address</b></label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.email}}" readonly>
+              </div>
+               <div class="form-group">
+                   <label ><b>Mobile No:</b></label>
+                <input type="email" class="form-control" id="id_mnumber" aria-describedby="emailHelp" value="{{cobj.mobile_no}}" readonly>
+              </div>
+              <div class="form-group">
+                  <label ><b>Alternate Mobile No:</b></label>
+                <input type="email" class="form-control" id="id_altmnumber" aria-describedby="emailHelp" value="{{cobj.alter_mobile}}" readonly>
+              </div>
+                        <label ><h4><b>Shipping Address:</b></h4></label>
+                        <div class="form-group">
+                  <label ><b>Adressline1:</b></label>
+                <input type="email" class="form-control" id="id_add1" aria-describedby="emailHelp" value="{{sobj.Addressline1}}" readonly>
+              </div>
+                        <div class="form-group">
+                  <label ><b>Adressline2:</b></label>
+                <input type="email" class="form-control" id="id_add2" aria-describedby="emailHelp" value="{{sobj.Addressline2}}" readonly>
+              </div>
+                <div class="form-group">
+                  <label ><b>City:</b></label>
+                <input type="email" class="form-control" id="id_city" aria-describedby="emailHelp" value="{{sobj.City}}" readonly>
+              </div>
+                        <div class="form-group">
+                  <label ><b>State:</b></label>
+                <input type="email" class="form-control" id="id_State" aria-describedby="emailHelp" value="{{sobj.State}}" readonly>
+              </div>
+                         <div class="form-group">
+                  <label ><b>Zipcode:</b></label>
+                <input type="email" class="form-control" id="id_Zipcode" aria-describedby="emailHelp" value="{{sobj.Zipcode}}" readonly>
+              </div>
+
+                 <div class="form-group">
+                  <label ><b>Country:</b></label>
+                <input type="email" class="form-control" id="id_Country" aria-describedby="emailHelp" value="{{sobj.Country}}" readonly>
+              </div>
+
+              <a class="btn btn-primary" href="/editprofile">Edit Profile</a>
+                    </form></div>
+    </scetion>
+
+{% endblock content %}

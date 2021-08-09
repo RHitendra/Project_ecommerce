@@ -1,0 +1,101 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block section %}
+		<div >
+			<h1>Check Out Page</h1>
+		</div>
+{% endblock %}
+{% block content %}
+    <!--================Cart Area =================-->
+<div class="container">
+   <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Billing Details</h3>
+                        <form class="row contact_form" action="" method="POST" novalidate="novalidate">
+                            {% csrf_token %}
+                            <div class="col-md-6 form-group p_star">
+                                {{form.first_name.label}}
+                                <fieldset disabled="disabled">{{form.first_name}}</fieldset>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                               {{form.last_name.label}}
+                                <fieldset disabled="disabled">{{form.last_name}}</fieldset>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                {{cform.mobile_no.label}}
+                                <div> {{cform.mobile_no}}</div>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                {{form.email.label}}
+                                <fieldset disabled="disabled">{{form.email}}</fieldset>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                    {{sform.Country.label}}
+                                <div> {{sform.Country}}</div>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                {{sform.Addressline1.label}}
+                                <div> {{sform.Addressline1}}</div>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                               {{sform.Addressline2.label}}
+                                <div> {{sform.Addressline2}}</div>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                {{sform.City.label}}
+                                <div> {{sform.City}}</div>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                {{sform.State.label}}
+                                <div> {{sform.State}}</div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                               {{sform.Zipcode.label}}
+                                <div> {{sform.Zipcode}}</div>
+                            </div>
+                            <div><button class="primary-btn" type="submit">Proceed To Pay</button></div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Your Order</h2>
+                            <ul class="list">
+
+                                <li><a href="#">Product <span>Total</span></a></li>
+                                {% for i in item %}
+                                <li><a href="#">{{i.product.product_name}}<span class="middle">x {{i.Quantity}}</span> <span class="last">Rs:{{i.get_total}}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                            <ul class="list list_2">
+                                <li><a href="#">Total <span>RS.{{order.get_cart_total|floatformat:2}}</span></a></li>
+                            </ul>
+                            <div class="payment_item">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option5" name="selector">
+                                    <label for="f-option5">Check payments</label>
+                                    <div class="check"></div>
+                                </div>
+                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
+                                    Store Postcode.</p>
+                            </div>
+                            <div class="payment_item active">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option6" name="selector">
+                                    <label for="f-option6">Paypal </label>
+                                    <img src="img/product/card.jpg" alt="">
+                                    <div class="check"></div>
+                                </div>
+                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                    account.</p>
+                            </div>
+                            <div class="creat_account">
+                                <input type="checkbox" id="f-option4" name="selector">
+                                <label for="f-option4">I’ve read and accept the </label>
+                                <a href="#">terms &amp; conditions*</a>
+                            </div>
+
+                        </div>
+                    </div></div>
+
+{% endblock content %}

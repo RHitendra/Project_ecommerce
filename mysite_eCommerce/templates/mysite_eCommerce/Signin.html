@@ -1,0 +1,78 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block section %}
+		<div >
+			<h1>Signin Page:</h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+<section>
+	<div class="login_form_inner">
+						<form  action="" method="POST" >
+                            {% csrf_token %}
+							<div class=" form-group">
+								{{form.username.label}}:
+								{{form.username}}
+							</div>
+							<div class=" form-group">
+								{{form.email.label}}:
+								{{form.email}}
+							</div>
+							<div class=" form-group">
+								{{form.password1.label}}:
+								{{form.password1}}
+							</div>
+							<div class=" form-group">
+								{{form.password2.label}}:
+								{{form.password2}}
+							</div>
+							<div  class=" form-group">
+								{{form.first_name.label}}:
+								{{form.first_name}}
+							</div>
+							<div class=" form-group">
+								{{form.last_name.label}}:
+								{{form.last_name}}
+							</div>
+							<div class=" form-group">
+								{{cform.mobile_no.label}}:
+								{{cform.mobile_no}}
+							</div><div class=" form-group">
+								{{cform.alter_mobile.label}}:
+								{{cform.alter_mobile}}
+							</div>
+							<div class=" form-group">
+								{{sform.Addressline1.label}}:
+								{{sform.Addressline1}}
+							</div>
+							<div class=" form-group">
+								{{sform.Addressline2.label}}:
+								{{sform.Addressline2}}
+							</div>
+							<div class=" form-group">
+								{{sform.City.label}}:
+								{{sform.City}}
+							</div>
+							<div class=" form-group">
+								{{sform.State.label}}:
+								{{sform.State}}
+							</div>
+							<div class=" form-group">
+								{{sform.Zipcode.label}}:
+								{{sform.Zipcode}}
+							</div>
+							<div class=" form-group">
+								{{sform.Country.label}}:
+								{{sform.Country}}
+							</div>
+
+							<div class="col-md-12 form-group">
+								<input type="submit" class="btn btn-warning" value = "Signin">
+							</div>
+							<p>Go to login page :</p>
+							<a href="/login">Login</a>
+						</form>
+	</div></section>
+
+{% endblock %}

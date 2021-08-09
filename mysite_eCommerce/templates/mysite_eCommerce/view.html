@@ -1,0 +1,60 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block section %}
+		<div >
+			<h1>Brand Name:</h1>
+          <h1><b>{{brand}}</b></h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+	<!-- start product Area -->
+
+	<section>
+
+		<div class="single-product-slider">
+
+
+			<div class="container">
+
+				<div class="row">
+
+					{% for p in products %}
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product" >
+							<img class="img-fluid" src="/media/{{p.product_image}} " alt="">
+							<div class="product-details">
+								<h6><b>{{p.product_name}}</b></h6>
+								<h6>{{p.product_desc}}</h6>
+								<div class="price">
+									<h6>Rs {{p.product_price}}</h6>
+
+								</div>
+								<div class="quan"><h5> Qut. {{p.product_quantity}}</h5></div>
+								<div class="prd-bottom">
+
+									<a href="" data-product={{p.id}} data-action="add" class="social-info update-cart">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to cart</p>
+									</a>
+									<a href="/productview/{{p.id}}" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+
+	<!-- end product Area -->
+
+{% endblock content %}

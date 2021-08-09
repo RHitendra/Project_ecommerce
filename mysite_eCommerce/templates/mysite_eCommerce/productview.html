@@ -1,0 +1,104 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block css %}
+	.img-fluid-view{
+		max-width: 427px;
+          height: 427px;
+
+	}
+{% endblock %}
+{% block section %}
+		<div >
+			<h1>PRODUCT VIEW PAGE:</h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+	<!-- start product Area -->
+	<!--================Single Product Area =================-->
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+						<div class="single-prd-item">
+							<img class="img-fluid-view" src="/media/{{pview.product_image}} " alt="">
+						</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3>{{pview.product_name}}</h3>
+						<h2>Rs. {{pview.product_price}}</h2>
+						<ul class="list">
+							<li><a class="active" href="#"><span>Category</span> : {{pview.product_category}}</a></li>
+							{% if  pview.product_quantity >= 1 %}
+							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+							{% else %}
+							<li><a href="#"><span>Availibility</span> : Out of Stock</a></li>
+							{% endif %}
+
+						</ul>
+						<p>{{pview.product_desc}}</p>
+						<div class="product_count">
+							<label for="qty">Quantity:</label>
+							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+						</div>
+						<div class="card_area d-flex align-items-center">
+							<a data-product={{pview.id}} data-action="add" class="social-info update-cart" href="#">Add to Cart</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><br><br>
+	<!--================End Single Product Area =================-->
+
+<div class="containor">
+	<section>
+		<h3>Similer product you may like:</h3>
+		<div class="single-product-slider">
+
+
+			<div class="container">
+
+				<div class="row">
+
+					{% for p in products|slice:":4" %}
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product" >
+							<img class="img-fluid" src="/media/{{p.product_image}} " alt="">
+							<div class="product-details">
+								<h6><b>{{p.product_name}}</b></h6>
+								<h6>{{p.product_desc|slice:"0:35"}}...</h6>
+								<div class="price">
+									<h6>Rs {{p.product_price}}</h6>
+
+								</div>
+								<div class="quan"><h5> Qut. {{p.product_quantity}}</h5></div>
+								<div class="prd-bottom">
+
+									<a href="" data-product={{p.id}} data-action="add" class="social-info update-cart">
+										<span class="ti-bag"></span>
+										<div><p class="hover-text">add to cart</p></div>
+									</a>
+									<a href="/productview/{{p.id}}" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+</div>
+{% endblock content %}

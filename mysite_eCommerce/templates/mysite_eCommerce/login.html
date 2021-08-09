@@ -1,0 +1,29 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block section %}
+		<div >
+			<h1>Login Page:</h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+	<div class="login_form_inner">
+						<h3>Log in to enter</h3>
+						<form class="row login_form" action="" method="POST" id="contactForm" novalidate="novalidate">
+							{% csrf_token %}
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							</div>
+							<div class="col-md-12 form-group">
+								<button type="submit" class="btn btn-warning">Log In</button>
+                                <br><p>New Here?</p>
+                                <a href="/signin">Signin</a>
+							</div>
+
+						</form>
+					</div>
+
+{% endblock content %}

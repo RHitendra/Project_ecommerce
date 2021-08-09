@@ -1,0 +1,69 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block css %}
+.col-lg-6{
+         margin: auto;
+        }
+{% endblock %}
+{% block section %}
+		<div >
+			<h1>Profile Page:</h1>
+		</div>
+{% endblock %}
+
+{% block content %}
+	<scetion>
+                    <div class="col-lg-6" ><form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label ><b>{{form.first_name.label}} : </b></label>
+                            <div >{{form.first_name}}</div>
+              </div>
+                        <div class="form-group">
+                            <label ><b>{{form.last_name.label}} : </b></label><div> {{form.last_name}}</div>
+
+              </div>
+              <div class="form-group">
+                <label ><b>{{form.email.label}} : </b></label><div readonly> {{form.email}}</div>
+
+              </div>
+              <div class="form-group">
+                  <label ><b>{{cform.mobile_no.label}}</b></label>
+                <div >{{cform.mobile_no}}</div>
+              </div>
+               <div class="form-group">
+                  <label ><b>{{cform.alter_mobile.label}}</b></label>
+                <div >{{cform.alter_mobile}}</div>
+              </div>
+                        <label ><h4><b>Shipping Address:</b></h4></label>
+                        <div class="form-group">
+                  <label ><b>{{sform.Addressline1.label}} : </b></label>
+                            <div>{{sform.Addressline1}}</div>
+              </div>
+                         <div class="form-group">
+                  <label ><b>{{sform.Addressline2.label}} : </b></label>
+                            <div>{{sform.Addressline2}}</div>
+              </div>
+                <div class="form-group">
+                  <label ><b>{{sform.City.label}} : </b></label>
+                            <div>{{sform.City}}</div>
+              </div>
+                        <div class="form-group">
+                  <label ><b>{{sform.State.label}} : </b></label>
+                            <div>{{sform.State}}</div>
+              </div>
+                          <div class="form-group">
+                  <label ><b>{{sform.Zipcode.label}} : </b></label>
+                            <div>{{sform.Zipcode}}</div>
+              </div>
+
+                <div class="form-group">
+                  <label ><b>{{sform.Country.label}} : </b></label>
+                            <div>{{sform.Country}}</div>
+              </div>
+
+              <button type="submit" class="btn btn-warning">Save</button>
+                    </form></div>
+    </scetion>
+
+{% endblock content %}

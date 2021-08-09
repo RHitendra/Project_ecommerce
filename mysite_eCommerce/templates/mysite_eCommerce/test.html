@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://npmcdn.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+        Lets satart Vue.js!!!!
+
+        <div id = "app">
+            <button v-on:click = "addyear(1)">Add year to age</button>
+            <button v-on:click = "reyear(1)">Remove year to age</button>
+            <button v-on:dblclick = "addyear(10)">Add 10 year to age</button>
+            <button v-on:dblclick = "reyear(10)">Remove 10 year to age</button>
+            <h1>[[ age ]]</h1>
+            <div id="canvas" style="border-style: solid; height:120px; text-align:center;" v-on:mousemove="updatexy"><h2>[[x]], [[y]]</h2></div>
+
+        </div>
+
+
+<script>
+var myObject = new Vue({
+  el: '#app',
+  delimiters: ["[[","]]"],
+  data: {age : 22,
+  x: 0,
+  y: 0,},
+  methods:{
+
+       addyear: function(inc){
+         this.age+=inc
+
+       },
+       reyear: function(dec){
+         this.age-=dec
+       },
+       updatexy: function(event){
+            this.x=event.offsetX
+            this.y=event.offsetY
+       },
+
+
+
+
+  },
+
+})
+</script>
+</body>
+</html>

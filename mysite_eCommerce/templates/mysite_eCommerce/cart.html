@@ -1,0 +1,124 @@
+{% extends "mysite_eCommerce/base.html" %}
+{% load static %}
+{% block section %}
+		<div >
+			<h1>SHOPPING CART</h1>
+		</div>
+{% endblock %}
+{% block content %}
+    <!--================Cart Area =================-->
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+
+                 <table class="table">
+                        <thead>
+                            <tr>
+
+                              <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+
+            <th scope="col">Total</th>
+                            </tr>
+
+</thead>
+                        <tbody>
+                        {% for i in item %}
+                            <tr>
+
+<td>
+                                    <div class="media">
+
+<div class="d-flex">
+                                            <img class="img-fluid" src="/media/{{i.product.product_image}}" alt="">
+
+                                </div>
+                                        <div class="media-body">
+                                            <h5><b>{{i.product.product_name}}</b></h5>
+
+                                </div>
+                                    </div>
+
+         </td>
+                                <td>
+                                    <h5>Rs:{{i.product.product_price|floatformat:2}}</h5>
+                                </td>
+                                <td>
+
+                  <div class="product_count">
+                                        <input type="text" name="qty" id="sst1" maxlength="12" value="{{i.Quantity}}" title="Quantity:"
+
+               class="input-text qty">
+                                        <button data-product={{i.product.id}}  data-action="add" class="increase items-count update-cart" type="button"><i class="lnr lnr-chevron-up"></i></button>
+
+<button data-product={{i.product.id}}  data-action="remove" class="reduced items-count update-cart" type="button"><i class="lnr lnr-chevron-down"></i></button>
+
+                    </div>
+                                </td>
+                                <td>
+
+                                <h5>Rs:{{i.get_total}}</h5>
+                                </td>
+
+          </tr>{% endfor %}
+
+                            <tr class="bottom_button">
+                                <td>
+                                    <a class="gray_btn" href="#">Update Cart</a>
+                                </td>
+
+       <td>
+
+                                </td>
+                                <td>
+
+
+             </td>
+                                <td>
+                                    <div class="cupon_text d-flex align-items-center">
+                                        <input type="text" placeholder="Coupon Code">
+                                        <a class="primary-btn" href="#">Apply</a>
+                                        <a class="gray_btn" href="#">Close Coupon</a>
+                                    </div>
+                                </td>
+
+              </tr>
+                            <tr>
+                                <td>
+
+
+                </td>
+                                <td>
+
+                                </td>
+
+                                <td>         <h5>Items : {{order.get_cart_items}}</h5></td><td>
+                                    <h5>Subtotal</h5>
+
+         </td>
+                                <td>
+                                    <h5>RS.{{order.get_cart_total|floatformat:2}}</h5>
+                                </td>
+                            </tr>
+
+       <tr>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="gray_btn" href="#">Continue Shopping</a>
+                                        <a class="primary-btn" href="/checkout">Proceed to checkout</a>
+                                    </div>
+
+                       </td>
+                            </tr>
+                        </tbody>
+
+          </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--
+================End Cart Area =================-->
+{% endblock content %}
